@@ -9,9 +9,9 @@
     <constant name="struts.custom.i18n.resources" value="ApplicationResources" />
  
     <package name="default" extends="struts-default" namespace="/">
-        <action name="login" class="net.viralpatel.struts2.LoginAction">
-            <result name="success">Welcome.jsp</result>
-            <result name="error">Login.jsp</result>
+        <action name="login" class="by.clubs.actions.LoginAction">
+            <result name="success">jsp/Welcome.jsp</result>
+            <result name="error">jsp/Login.jsp</result>
         </action>
     </package>
 </struts>

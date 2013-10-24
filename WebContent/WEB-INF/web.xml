@@ -4,7 +4,7 @@
   <filter>
         <filter-name>struts2</filter-name>
         <filter-class>
-            org.apache.struts2.dispatcher.StrutsPrepareAndExecuteFilter
+            org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter
         </filter-class>
     </filter>
     <filter-mapping>
@@ -12,6 +12,6 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
   <welcome-file-list>
-    <welcome-file>Login.jsp</welcome-file>
+    <welcome-file>jsp/Login.jsp</welcome-file>
   </welcome-file-list>
 </web-app>
