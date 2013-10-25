@@ -1,4 +1,4 @@
-package by.clubs.bean;
+package by.clubs.model.beans;
 
 import java.util.Date;
 
