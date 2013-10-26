@@ -1,14 +1,11 @@
 package by.clubs.ifaces;
 
-
-
 import java.util.List;
-
-import by.gsu.epamlab.model.beans.Role;
-import by.gsu.epamlab.model.beans.User;
-import by.gsu.epamlab.utils.TheatreExeption;
+import by.clubs.model.beans.User;
+import by.clubs.utils.TheatreExeption;
 
 /**
+ * Interface for user DAO
  * @author Kalachev
  *
  */
@@ -83,7 +80,7 @@ public interface IUserDAO {
 	 * @return long
 	 * @throws TheatreExeption 
 	 */
-	public long getDefinedUsersSize(Role role) throws TheatreExeption;
+//	public long getDefinedUsersSize(Role role);
 
 	/**
 	 * Gets list of users with specified role
@@ -92,7 +89,7 @@ public interface IUserDAO {
 	 * @return List of users
 	 * @throws TheatreExeption 
 	 */
-	public List<User> getDefinedUsers(Role currentRole, int currentPage) throws TheatreExeption;
+//	public List<User> getDefinedUsers(Role currentRole, int currentPage);
 
 	/**
 	 * Gets list of all users

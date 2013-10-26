@@ -1,6 +1,7 @@
 package by.clubs.model.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -9,12 +10,11 @@ import javax.persistence.Query;
 
 import org.apache.log4j.Logger;
 
-import by.gsu.epamlab.controllers.Constants;
-import by.gsu.epamlab.ifaces.IUserDAO;
-import by.gsu.epamlab.model.beans.Role;
-import by.gsu.epamlab.model.beans.User;
-import by.gsu.epamlab.utils.HibernateJpaUtil;
-import by.gsu.epamlab.utils.TheatreExeption;
+import by.clubs.actions.Constants;
+import by.clubs.ifaces.IUserDAO;
+import by.clubs.model.beans.User;
+import by.clubs.utils.HibernateJpaUtil;
+import by.clubs.utils.TheatreExeption;
 
 
 /**
@@ -35,8 +35,10 @@ public class UserImplJpa implements IUserDAO {
 				User user = new User();
 				user.setLogin(u.getLogin());
 				user.setPassword(u.getPassword());
-				user.setPhone(u.getPhone());
-				user.setRole(u.getRole());
+				user.setDateCreated(new Date());
+				user.setDateUpdated(new Date());
+				user.setCityId(u.getCityId());
+				user.setDeleted(false);
 				user.setDeleted(false);
 				em.persist(user);
 				t.commit();
@@ -185,60 +187,60 @@ public class UserImplJpa implements IUserDAO {
 		return result;
 	}
 
-	@Override
-	public long getDefinedUsersSize(Role role) throws TheatreExeption {
-		long result = 0;
-		try {
-			EntityManager em = HibernateJpaUtil.getEntityManagerFactory().createEntityManager();
-			EntityTransaction t = em.getTransaction();
-			try{
-				t.begin();
-				Query query = em.createQuery(ConstantsJpa.GET_DEFINED_USERS_COUNT);
-				query.setParameter(1, role);
-				result = (Long)query.getSingleResult();
-				t.commit();
-			}finally{
-				if (t.isActive()) {
-					t.rollback();
-				}
-				em.close();
-			}
-			
-		} catch (Exception e) {
-			LOG.error(e.getMessage(), e);
-			throw new TheatreExeption();
-		}
-		return result;
-	}
+//	@Override
+//	public long getDefinedUsersSize(Role role) throws TheatreExeption {
+//		long result = 0;
+//		try {
+//			EntityManager em = HibernateJpaUtil.getEntityManagerFactory().createEntityManager();
+//			EntityTransaction t = em.getTransaction();
+//			try{
+//				t.begin();
+//				Query query = em.createQuery(ConstantsJpa.GET_DEFINED_USERS_COUNT);
+//				query.setParameter(1, role);
+//				result = (Long)query.getSingleResult();
+//				t.commit();
+//			}finally{
+//				if (t.isActive()) {
+//					t.rollback();
+//				}
+//				em.close();
+//			}
+//			
+//		} catch (Exception e) {
+//			LOG.error(e.getMessage(), e);
+//			throw new TheatreExeption();
+//		}
+//		return result;
+//	}
 
-	@Override
-	public List<User> getDefinedUsers(Role currentRole, int page) throws TheatreExeption {
-		List<User> users = new ArrayList<User>();
-		
-		try {
-			EntityManager em = HibernateJpaUtil.getEntityManagerFactory().createEntityManager();
-			EntityTransaction t = em.getTransaction();
-			try{
-				t.begin();
-				Query query = em.createQuery(ConstantsJpa.GET_DEFINED_USERS);
-				query.setParameter(1, currentRole);
-				query.setFirstResult((page-1)*Constants.PAGE_SIZE);
-				query.setMaxResults(Constants.PAGE_SIZE);
-				users = query.getResultList();
-				t.commit();
-			}finally{
-				if (t.isActive()) {
-					t.rollback();
-				}
-				em.close();
-			}
-			
-		} catch (Exception e) {
-			LOG.error(e.getMessage(), e);
-			throw new TheatreExeption();
-		}
-		return users;
-	}
+//	@Override
+//	public List<User> getDefinedUsers(Role currentRole, int page) throws TheatreExeption {
+//		List<User> users = new ArrayList<User>();
+//		
+//		try {
+//			EntityManager em = HibernateJpaUtil.getEntityManagerFactory().createEntityManager();
+//			EntityTransaction t = em.getTransaction();
+//			try{
+//				t.begin();
+//				Query query = em.createQuery(ConstantsJpa.GET_DEFINED_USERS);
+//				query.setParameter(1, currentRole);
+//				query.setFirstResult((page-1)*Constants.PAGE_SIZE);
+//				query.setMaxResults(Constants.PAGE_SIZE);
+//				users = query.getResultList();
+//				t.commit();
+//			}finally{
+//				if (t.isActive()) {
+//					t.rollback();
+//				}
+//				em.close();
+//			}
+//			
+//		} catch (Exception e) {
+//			LOG.error(e.getMessage(), e);
+//			throw new TheatreExeption();
+//		}
+//		return users;
+//	}
 
 	@Override
 	public List<User> getAllUsers(int page) throws TheatreExeption {
@@ -278,9 +280,14 @@ public class UserImplJpa implements IUserDAO {
 				User userx = em.find(User.class, user.getId());
 				userx.setLogin(user.getLogin());
 				userx.setPassword(user.getPassword());
-				userx.setPhone(user.getPhone());
-				userx.setRole(user.getRole());
 				userx.setDeleted(user.isDeleted());
+				userx.setDateUpdated(user.getDateUpdated());
+				userx.setBirthday(user.getBirthday());
+				userx.setFirstName(user.getFirstName());
+				userx.setMiddleName(user.getMiddleName());
+				userx.setLastName(user.getLastName());
+				userx.setCityId(user.getCityId());
+				userx.setRoleId(user.getRoleId());
 				t.commit();
 			}finally{
 				if (t.isActive()) {

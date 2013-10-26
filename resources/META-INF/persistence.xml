@@ -6,18 +6,14 @@
 	<persistence-unit name="org.hibernate.tutorial.jpa">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 
-		<class>by.gsu.epamlab.model.beans.Schedule</class>
-		<class>by.gsu.epamlab.model.beans.Seat</class>
-		<class>by.gsu.epamlab.model.beans.Play</class>
 		<class>by.gsu.epamlab.model.beans.User</class>
-		<class>by.gsu.epamlab.model.beans.Order</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/epam_project" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/clubs" />
 			<property name="javax.persistence.jdbc.user" value="user" />
-			<property name="javax.persistence.jdbc.password" value="admin" />
+			<property name="javax.persistence.jdbc.password" value="user" />
 
 			<property name="hibernate.show_sql" value="true" />
 			<!-- <property name="hibernate.hbm2ddl.auto" value="create" /> -->
