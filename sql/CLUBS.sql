@@ -1,3 +1,4 @@
+USE clubs;
 create table if not exists USERS
 (
 ID int PRIMARY KEY,
