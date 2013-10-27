@@ -3,6 +3,9 @@ package by.clubs.model.factories;
 import java.util.HashMap;
 import java.util.Map;
 
+import by.clubs.ifaces.IUserDAO;
+import by.clubs.model.impl.UserImplJpa;
+
 /**
  * @author Kalachev
  *
@@ -12,7 +15,7 @@ public class DAOFactory {
 	
 	static{
 		
-//		map.put(IUserDAO.class.getName(), new UserImplJpa());
+		map.put(IUserDAO.class.getName(), new UserImplJpa());
 //		map.put(ISeatDAO.class.getName(), new SeatImplJpa());
 //		map.put(IOrderDAO.class.getName(), new OrderImplJpa());
 //		map.put(IPlayDAO.class.getName(), new PlayImplJpa());

@@ -11,7 +11,7 @@
 <s:form name="loginform" action="login" method="post" namespace="/">
     <s:textfield name="username" key="label.username" maxlength="25" required="true" cssClass="span3"/>
 	<BR>
-	<s:password name="password" key="lable.password" maxlength="25" required="true" cssClass="span3"/>
+	<s:password name="password" key="label.password" maxlength="25" required="true" cssClass="span3"/>
 	<BR>
     <s:submit method="execute" key="label.login" align="center" cssClass="btn btn-warning"/>
 </s:form>

@@ -26,7 +26,7 @@ public class AddUserAction extends ActionSupport implements SessionAware {
 //	private static final long serialVersionUID = 6691592070065652199L;
 	private String login;
 	private String password;
-	private String confirmedPassword;
+	private String confirmpassword;
 	private Map<String, Object> session;
 	private IUserDAO userDAO = (IUserDAO)DAOFactory.getDAO(Constants.USER_DAO);
 	private static final Logger LOG = Logger.getLogger(AddUserAction.class);
@@ -59,7 +59,7 @@ public class AddUserAction extends ActionSupport implements SessionAware {
 		{
 			addActionError(getText("error.login.emty"));
 			return true;
-		}else if (!password.equals(confirmedPassword)) 
+		}else if (!password.equals(confirmpassword)) 
 		{
 			addActionError(getText("error.login.passwords.confirm.missmuch"));
 			return true;
@@ -88,12 +88,12 @@ public class AddUserAction extends ActionSupport implements SessionAware {
 		this.password = password;
 	}
 
-	public String getConfirmedPassword() {
-		return confirmedPassword;
+	public String getConfirmpassword() {
+		return confirmpassword;
 	}
 
-	public void setConfirmedPassword(String confirmedPassword) {
-		this.confirmedPassword = confirmedPassword;
+	public void setConfirmpassword(String confirmpassword) {
+		this.confirmpassword = confirmpassword;
 	}
 
 	public Map<String, Object> getSession() {
