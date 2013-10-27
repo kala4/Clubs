@@ -10,7 +10,7 @@ import java.util.Date;
 public class User 
 {
 	/** User ID */
-	private Long m_id;
+	private int m_id;
 	/** Date of user creation */
 	private Date m_dateCreated;
 	/** Date of user modification */
@@ -35,10 +35,32 @@ public class User
 	private String m_password;
 	
 	/**
+	 * Default constructor
+	 */
+	public User() 
+	{
+		super();
+	}
+	
+	/**
+	 * Constructor with parameters
+	 * @param id - user id
+	 * @param login - login
+	 * @param password - password
+	 */
+	public User(int id, String login, String password) 
+	{
+		super();
+		this.m_id = id;
+		this.m_login = login;
+		this.m_password = password;
+	}
+
+	/**
 	 * Getter for user ID
 	 * @return id
 	 */
-	public Long getId() 
+	public int getId() 
 	{
 		return m_id;
 	}
@@ -47,7 +69,7 @@ public class User
 	 * Setter for user ID
 	 * @param id - new users id
 	 */
-	public void setId(Long id) 
+	public void setId(int id) 
 	{
 		this.m_id = id;
 	}

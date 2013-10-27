@@ -37,8 +37,6 @@ public class UserImplJpa implements IUserDAO {
 				user.setPassword(u.getPassword());
 				user.setDateCreated(new Date());
 				user.setDateUpdated(new Date());
-				user.setCityId(u.getCityId());
-				user.setDeleted(false);
 				user.setDeleted(false);
 				em.persist(user);
 				t.commit();
