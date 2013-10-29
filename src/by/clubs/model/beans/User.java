@@ -2,36 +2,69 @@ package by.clubs.model.beans;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
- * The persistence entity class which will map to the Users table in database
+ * The persistence entity class which maps to the Users table in database
  * @author Aliaksei_Kalachou
  *
  */
+@Entity
+@Table(name = "USERS")
 public class User 
 {
 	/** User ID */
+	@Id
+	@GeneratedValue
+	@Column(name = "ID", nullable = false, unique = true)
 	private int m_id;
+	
 	/** Date of user creation */
+	@Column(name = "DATE_CREATED")
 	private Date m_dateCreated;
+	
 	/** Date of user modification */
+	@Column(name = "DATE_UPDATED")
 	private Date m_dateUpdated;
+	
 	/** Flag for deleted user */
+	@Column(name = "IS_DELETED")
 	private boolean m_isDeleted;
+	
 	/** User first name */
+	@Column(name = "FIRST_NAME")
 	private String m_firstName;
+	
 	/** User last name */
+	@Column(name = "LAST_NAME")
 	private String m_lastName;
+	
 	/** User middle name */
+	@Column(name = "MIDDLE_NAME")
 	private String m_middleName;
+	
 	/** City Id */
+	@Column(name = "SITY_ID")
 	private Long m_cityId;
+	
 	/** User birthday */
+	@Column(name = "BIRTHDAY")
 	private Date m_birthday;
+	
 	/** User role */
+	@Column(name = "ROLE_ID", nullable = true, unique = false)
 	private Long m_roleId;
+	
 	/** User login */
+	@Column(name = "LOGIN", nullable = false, unique = true)
 	private String m_login;
+	
 	/** User password */
+	@Column(name = "PASS", nullable = false, unique = false)
 	private String m_password;
 	
 	/**
