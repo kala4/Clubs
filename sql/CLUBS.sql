@@ -1,7 +1,7 @@
 USE clubs;
 create table if not exists USERS
 (
-ID int PRIMARY KEY,
+ID int PRIMARY KEY NOT NULL AUTO_INCREMENT,
 DATE_CREATED datetime,
 DATE_UPDATED datetime,
 IS_DELETED boolean,
@@ -17,7 +17,7 @@ PASS varchar (30)
 
 create table if not exists CLUBS
 (
-ID int PRIMARY KEY,
+ID int PRIMARY KEY NOT NULL AUTO_INCREMENT,
 CLUB_NAME varchar(30),
 BIRTHDAY datetime,
 DATE_CREATED datetime,
@@ -27,13 +27,13 @@ IS_DELETED boolean
 
 create table if not exists ROLES
 (
-ID int PRIMARY KEY,
+ID int PRIMARY KEY NOT NULL AUTO_INCREMENT,
 ROLE varchar(30)
 );
 
 create table if not exists CONTACTS
 (
-ID int PRIMARY KEY,
+ID int PRIMARY KEY NOT NULL AUTO_INCREMENT,
 USER_ID int,
 CLUB_NAME varchar(30),
 CONTACT_TYPE_ID int,
@@ -45,20 +45,20 @@ IS_DELETED boolean
 
 create table if not exists CONTACT_TYPES
 (
-ID int PRIMARY KEY,
+ID int PRIMARY KEY NOT NULL AUTO_INCREMENT,
 CONTACT_TYPE varchar(30)
 );
 
 create table if not exists ADDRESS
 (
-ID int PRIMARY KEY,
+ID int PRIMARY KEY NOT NULL AUTO_INCREMENT,
 USER_ID int,
 ADDRESS varchar(250)
 );
 
 create table if not exists COACHES
 (
-ID int PRIMARY KEY,
+ID int PRIMARY KEY NOT NULL AUTO_INCREMENT,
 USER_ID int,
 CLUB_ID int,
 SPECIALITY varchar(250)
