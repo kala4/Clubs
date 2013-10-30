@@ -34,7 +34,7 @@ public interface ConstantsJpa {
 	
 	String GET_USER_ID = "SELECT u.id FROM User u WHERE u.login = ?";
 	String IS_LOGIN_FREE = "SELECT u.login FROM User u WHERE u.login = ?";
-	String LOGIN_USER = "SELECT u FROM User u WHERE u.login = ? AND u.password = ?";
+	String LOGIN_USER = "SELECT u FROM User u WHERE u.m_login = ? AND u.m_password = ?";
 	String GET_USER = "SELECT u FROM User u WHERE u.id = ?";
 	String GET_ALL_USERS = "SELECT u FROM User u ORDER BY u.login";
 	String GET_ALL_USERS_COUNT = "SELECT COUNT(u) FROM User u ORDER BY u.login";

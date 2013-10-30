@@ -1,3 +1,5 @@
+drop database clubs;
+create database clubs;
 USE clubs;
 create table if not exists USERS
 (
@@ -62,6 +64,34 @@ ID int PRIMARY KEY NOT NULL AUTO_INCREMENT,
 USER_ID int,
 CLUB_ID int,
 SPECIALITY varchar(250)
+);
+
+create table if not exists GAMES
+(
+ID int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+DATE_CREATED datetime,
+DATE_UPDATED datetime,
+IS_DELETED boolean,
+WINNER_ID int,
+RESULT int
+);
+
+create table if not exists SETS
+(
+ID int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+GAME_ID int not null,
+DATE_CREATED datetime,
+DATE_UPDATED datetime,
+IS_DELETED boolean,
+WINNER_ID int,
+RESULT int
+);
+
+create table if not exists PLAYERS
+(
+ID int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+GAME_ID int not null,
+USER_ID int not null
 );
 
 insert into ROLES (ID, ROLE) values 
