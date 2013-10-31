@@ -3,15 +3,44 @@ package by.clubs.model.beans;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "GAMES")
 public class Game 
 {
+	@Id
+	@GeneratedValue
+	@Column(name = "ID", nullable = false, unique = true)
 	private int m_id;
+	
+	@Column(name = "DATE_CREATED")
 	private Date m_dateCreated;
+	
+	@Column(name = "DATE_UPDATED")
 	private Date m_dateUpdated;
+	
+	@Column(name = "IS_DELETED")
 	private boolean m_isDeleted;
 	private List<User> m_players;
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "GAMES")
 	private List<Set> m_sets;
+	
+	@OneToOne
+	@JoinColumn(name = "WINNER_ID", nullable=true, insertable=true, updatable=true, unique=false)
 	private User m_winner;
+	
+	@Column(name = "RESULT")
 	private int m_result;
 	
 	public int getId() {
