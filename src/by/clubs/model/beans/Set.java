@@ -12,70 +12,153 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+/**
+ * The persistence entity class which maps to the Sets table in database
+ * @author Aliaksei_Kalachou
+ *
+ */
 @Entity
 @Table(name = "SETS")
 public class Set 
 {
+	/** ID */
 	@Id
 	@GeneratedValue
 	@Column(name = "ID", nullable = false, unique = true)
 	private int id;
 	
+	/** Game */
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "GAME_ID")
 	private Game game;
 	
+	/** Creation date */
 	@Column(name = "DATE_CREATED")
 	private Date dateCreated;
 	
+	/** madification date */
 	@Column(name = "DATE_UPDATED")
 	private Date dateUpdated;
 	
+	/** Deletion flag */
 	@Column(name = "IS_DELETED")
 	private boolean isDeleted;
 	
+	/** Winner of the set */
 	@OneToOne
 	@JoinColumn(name = "WINNER_ID", nullable=true, insertable=true, updatable=true, unique=false)
 	private User winner;
 	
+	/** Set's result */
 	@Column(name = "RESULT")
 	private int result;
 	
-	public int getId() {
+	
+	/**
+	 * Getter for the set's id
+	 * @return id
+	 */
+	public int getId() 
+	{
 		return id;
 	}
-	public void setId(int id) {
+	
+	/**
+	 * Setter for the Set's id
+	 * @param id - id to be set
+	 */
+	public void setId(int id) 
+	{
 		this.id = id;
 	}
 	
-	public Date getDateCreated() {
+	/**
+	 * Getter for the date of Set creation
+	 * @return Set's creation date
+	 */
+	public Date getDateCreated() 
+	{
 		return dateCreated;
 	}
-	public void setDateCreated(Date dateCreated) {
+	
+	/**
+	 * Setter for the Set creation date
+	 * @param dateCreated - date of Set creation
+	 */
+	public void setDateCreated(Date dateCreated) 
+	{
 		this.dateCreated = dateCreated;
 	}
-	public Date getDateUpdated() {
+	
+	/**
+	 * Getter for the last date of Set modification
+	 * @return Set modification date
+	 */
+	public Date getDateUpdated() 
+	{
 		return dateUpdated;
 	}
-	public void setDateUpdated(Date dateUpdated) {
+	
+	/**
+	 * Setter for the last date of Set modification
+	 * @param dateUpdated - date of Set modification
+	 */
+	public void setDateUpdated(Date dateUpdated) 
+	{
 		this.dateUpdated = dateUpdated;
 	}
-	public boolean isDeleted() {
+	
+	/**
+	 * Getter for the isDeleted flag
+	 * @return isDeleted flag
+	 */
+	public boolean isDeleted() 
+	{
 		return isDeleted;
 	}
-	public void setDeleted(boolean isDeleted) {
+	
+	/**
+	 * Setter for the isDeleted flag
+	 * @param isDeleted - flag to be set
+	 */
+	public void setDeleted(boolean isDeleted) 
+	{
 		this.isDeleted = isDeleted;
 	}
-	public User getWinner() {
+	
+	/**
+	 * Getter for the set winner
+	 * @return User who win the set
+	 */
+	public User getWinner() 
+	{
 		return winner;
 	}
-	public void setWinner(User winner) {
+	
+	/**
+	 * Setter for set winner
+	 * @param winner - user who win the set
+	 */
+	public void setWinner(User winner) 
+	{
 		this.winner = winner;
 	}
-	public int getResult() {
+	
+	/**
+	 * Getter for the set result
+	 * @return result
+	 */
+	public int getResult() 
+	{
 		return result;
 	}
-	public void setResult(int result) {
+	
+	/**
+	 * Setter for the set result
+	 * @param result - result to be set
+	 */
+	public void setResult(int result) 
+	{
 		this.result = result;
 	}
 }
