@@ -9,7 +9,8 @@ import by.clubs.utils.TheatreExeption;
  * @author Kalachev
  *
  */
-public interface IUserDAO {
+public interface IUserDAO 
+{
 	
 	/**
 	 * Saves new User
