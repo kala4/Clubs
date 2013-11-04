@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -40,11 +41,18 @@ public class Game
 	/** Deleted flag */
 	@Column(name = "IS_DELETED")
 	private boolean m_isDeleted;
+	
 	/** List of players */
+	@OneToMany
+	@JoinTable(
+			  name = "PLAYERS",
+		      joinColumns = { @JoinColumn(name = "GAME_ID", referencedColumnName = "ID") },
+		      inverseJoinColumns = { @JoinColumn(name = "USER_ID", referencedColumnName = "ID") }
+			  )
 	private List<User> m_players;
 	
 	/** List of game sets */
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "GAMES")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "game")
 	private List<Set> m_sets;
 	
 	/** Winner */

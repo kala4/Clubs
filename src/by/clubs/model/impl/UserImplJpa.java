@@ -18,6 +18,7 @@ import by.clubs.utils.TheatreExeption;
 
 
 /**
+ * JPA DAO implementation for User
  * @author Kalachev
  *
  */
@@ -25,10 +26,14 @@ public class UserImplJpa implements IUserDAO {
 	
 	private static final Logger LOG = Logger.getLogger(UserImplJpa.class);
 
+	/* Creates new User in database.
+	 * @param u - user to be created
+	 */
 	@Override
 	public void createUser(User u) throws TheatreExeption 
 	{
-		try {
+		try 
+		{
 			EntityManager em = HibernateJpaUtil.getEntityManagerFactory().createEntityManager();
 			EntityTransaction t = em.getTransaction();
 			try 
@@ -54,7 +59,7 @@ public class UserImplJpa implements IUserDAO {
 		} 
 		catch (Exception e) 
 		{
-			LOG.error("Exeption in method createUser(User u): "+e.getMessage(), e);
+			LOG.error("Exeption in method createUser(User u): " + e.getMessage(), e);
 			throw new TheatreExeption();
 		}
 	}
@@ -168,7 +173,7 @@ public class UserImplJpa implements IUserDAO {
 		} 
 		catch (Exception e) 
 		{
-			LOG.error("Exeption in method loginUser(String login, String password): "+e.getMessage(), e);
+			LOG.error("Exeption in method loginUser(String login, String password): " + e.getMessage(), e);
 			throw new TheatreExeption();
 		}
 		return result;
@@ -211,7 +216,7 @@ public class UserImplJpa implements IUserDAO {
 			{
 				t.begin();
 				Query query = em.createQuery(ConstantsJpa.GET_ALL_USERS_COUNT);
-				result = (Long)query.getSingleResult();
+				result = (Long) query.getSingleResult();
 				t.commit();
 			}
 			finally
@@ -299,7 +304,7 @@ public class UserImplJpa implements IUserDAO {
 			{
 				t.begin();
 				Query query = em.createQuery(ConstantsJpa.GET_ALL_USERS);
-				query.setFirstResult((page-1)*Constants.PAGE_SIZE);
+				query.setFirstResult((page - 1) * Constants.PAGE_SIZE);
 				query.setMaxResults(Constants.PAGE_SIZE);
 				users = query.getResultList();
 				t.commit();
@@ -353,7 +358,8 @@ public class UserImplJpa implements IUserDAO {
 				}
 				em.close();
 			}
-		} catch (Exception e) 
+		} 
+		catch (Exception e) 
 		{
 			LOG.error(e.getMessage(), e);
 			throw new TheatreExeption();
@@ -372,7 +378,7 @@ public class UserImplJpa implements IUserDAO {
 			{
 				t.begin();
 				Query query = em.createQuery(ConstantsJpa.GET_DELETED_USERS_COUNT);
-				result = (Long)query.getSingleResult();
+				result = (Long) query.getSingleResult();
 				t.commit();
 			}
 			finally
@@ -384,7 +390,8 @@ public class UserImplJpa implements IUserDAO {
 				em.close();
 			}
 			
-		} catch (Exception e) 
+		} 
+		catch (Exception e) 
 		{
 			LOG.error(e.getMessage(), e);
 			throw new TheatreExeption();

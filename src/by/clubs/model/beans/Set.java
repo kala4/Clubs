@@ -36,7 +36,7 @@ public class Set
 	@Column(name = "DATE_CREATED")
 	private Date dateCreated;
 	
-	/** madification date */
+	/** Modification date */
 	@Column(name = "DATE_UPDATED")
 	private Date dateUpdated;
 	

@@ -45,5 +45,5 @@ public interface ConstantsJpa {
 	String GET_ORDERS_FROM_PERIOD = "SELECT o FROM Order o WHERE o.schedule.date>=? AND o.schedule.date<=?";
 	String GET_ORDERS_FROM_PERIOD_FOR_REPORT = "SELECT o.id AS id, o.user.login AS login FROM Order o WHERE o.schedule.date>=? AND o.schedule.date<=?";
 	
-	
+	String GET_GAMES_LIST = "SELECT g FROM Game g ORDER BY g.dateCreated";
 }
