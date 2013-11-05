@@ -29,5 +29,11 @@
 	<s:text name="welcome.addGame" />
 </s:a>
 
+</br>
+
+<s:a href="addUser-page">
+	<s:text name="welcome.addGame" />
+</s:a>
+
 </body>
 </html>

@@ -17,8 +17,15 @@
             <result name="success">/AddUser.jsp</result>
             <result name="error">/AddUser.jsp</result>
         </action>
+        
         <action name="addUser-page">
 			<result name="success">/AddUser.jsp</result>
+		</action>
+		<action name="addGame-page">
+			<result name="success">/AddGame.jsp</result>
+		</action>
+		<action name="allGames-page">
+			<result name="success">/AllGames.jsp</result>
 		</action>
     </package>
     
