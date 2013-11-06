@@ -116,4 +116,7 @@ insert into CLUBS (ID, CLUB_NAME, BIRTHDAY, DATE_CREATED, DATE_UPDATED, IS_DELET
 
 insert into USERS (ID, DATE_CREATED, DATE_UPDATED, IS_DELETED, FIRST_NAME, LAST_NAME, MIDDLE_NAME, SITY_ID, BIRTHDAY, ROLE_ID, LOGIN, PASS) values
 (1, NOW(), NOW(), false, "Алексей", "Калачев", null, null, '1985-08-01', 3, "kala4", "kala4");
+(2, NOW(), NOW(), false, "Андрей", "Андрей", null, null, '1985-08-01', 1, "Андрей", "Андрей");
+(3, NOW(), NOW(), false, "Аня", "Аня", null, null, '1985-08-01', 1, "Аня", "Аня");
+(4, NOW(), NOW(), false, "Тома", "Калачева", null, null, '1985-08-01', 1, "Тома", "Тома");
 
