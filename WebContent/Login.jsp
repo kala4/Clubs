@@ -25,13 +25,13 @@
 </s:a>
 </br>
 
-<s:a href="addUser-page">
+<s:a href="addGame-page">
 	<s:text name="welcome.addGame" />
 </s:a>
 
 </br>
 
-<s:a href="addUser-page">
+<s:a href="addGame-page">
 	<s:text name="welcome.addGame" />
 </s:a>
 

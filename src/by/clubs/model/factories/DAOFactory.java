@@ -4,7 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import by.clubs.ifaces.IUserDAO;
-import by.clubs.model.impl.UserImplJpa;
+//import by.clubs.model.impl.UserImplJpa;
+import by.clubs.model.impl.test.UserImplJpa;
 
 /**
  * @author Kalachev

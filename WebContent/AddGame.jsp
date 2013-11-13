@@ -3,25 +3,14 @@
 <html>
 <head>
 <title>start new game</title>
-<script type="text/javascript">
-function chosePlayer(id) {
-	alert("Player added " + id);
-} 
-</script>
+
 </head>
  
 <body>
 <h2>Chose players</h2>
-<s:actionerror />
-<s:form action="addUser" method="post">
-    <s:textfield name="login" key="label.username" size="20" />
-    <s:password name="password" key="label.password" size="20" />
-    <s:password name="confirmpassword" key="label.password.confirm" size="20" />
-    <s:submit method="execute" key="label.login" align="center" />
-</s:form>
 
 					<div class="well">
-					<table class="table table-striped table-bordered table-condensed">
+					<table id="users" class="table table-striped table-bordered table-condensed">
 						<tr>
 							<th width="20%"><B>first name</B>
 							</th>
@@ -33,8 +22,8 @@ function chosePlayer(id) {
 							</th>
 							
 						</tr>
-						<s:iterator var="user" value="%{#request.users}">
-							<tr id="user_%{#user.id}">
+						<s:iterator var="user" value="%{#session.users}">
+							<tr id="user_<s:property value="%{#user.id}" />">
 								<td><s:property value="%{#user.firstname}" />
 								</td>
 								<td><s:property value="%{#user.login}" />
@@ -43,22 +32,14 @@ function chosePlayer(id) {
 								</td>
 								<td><s:a href="#" cssClass="btn btn-danger" onclick="chosePlayer(%{#user.id});">
 											<i class="icon-trash icon-white"></i>
-											<s:text name="cancel.order" />
+											<s:text name="chose" />
+										</s:a>
+										<s:a href="#" cssClass="btn btn-danger" onclick="removePlayer(%{#user.id});">
+											<i class="icon-trash icon-white"></i>
+											<s:text name="remove" />
 										</s:a>
 								</td>
-								<td><s:if
-										test="%{#order.orderStatus == @by.gsu.epamlab.model.beans.OrderStatusEnum@ORDERED || #order.orderStatus == @by.gsu.epamlab.model.beans.OrderStatusEnum@NEW}">
-										<s:url value="orderChangesCancel" var='cancelLink'>
-											<s:param name="orderId" value="%{#order.id}" />
-										</s:url>
-										<s:a href="%{cancelLink}" cssClass="btn btn-danger">
-											<i class="icon-trash icon-white"></i>
-											<s:text name="cancel.order" />
-										</s:a>
-										<BR>
-									</s:if> <s:else>
-										<s:text name="no.order.action" />
-									</s:else></td>
+								
 							</tr>
 						</s:iterator>
 					</table>
@@ -67,6 +48,35 @@ function chosePlayer(id) {
 </br>
 </br>
 
+<h2>Players</h2>
 
+<div class="well">
+					<table id="players" class="table table-striped table-bordered table-condensed">
+						<tr>
+							<th width="20%"><B>first name</B>
+							</th>
+							<th width="50%"><B>login</B>
+							</th>
+							<th width="30%"><B>last name</B>
+							</th>
+							<th width="0%">
+							</th>
+							
+						</tr>
+					</table>
+</div>
+
+<script src="js/jquery-1.7.1.js"></script>
+<script type="text/javascript">
+function chosePlayer(id){
+	console.log(id);
+	$("#user_"+id).appendTo("#players");
+};
+
+function removePlayer(id){
+	console.log(id);
+	$("#user_"+id).appendTo("#users");
+};
+</script>
 </body>
 </html>

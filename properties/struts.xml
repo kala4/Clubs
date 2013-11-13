@@ -9,6 +9,11 @@
     <constant name="struts.custom.i18n.resources" value="messages" />
  
     <package name="default" extends="struts-default" namespace="/">
+    
+    	<interceptors>
+    		<interceptor name="users" class="by.clubs.actions.interceptors.UsersListInterceptor"></interceptor>
+    	</interceptors>
+    
         <action name="login" class="by.clubs.actions.LoginAction">
             <result name="success">/Welcome.jsp</result>
             <result name="error">/Login.jsp</result>
@@ -22,6 +27,7 @@
 			<result name="success">/AddUser.jsp</result>
 		</action>
 		<action name="addGame-page">
+			<interceptor-ref name="users"></interceptor-ref>
 			<result name="success">/AddGame.jsp</result>
 		</action>
 		<action name="allGames-page">
